@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
     return  Scaffold(
-      backgroundColor:Color(0xff3583cc),
+       backgroundColor: Colors.lightBlue,
       body: PageView(
         controller: Controller,
         children: const [
@@ -42,13 +42,14 @@ class _Page1State extends State<Page1> {
   Widget build(BuildContext context) {
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
-    return  Container(
+    return Scaffold(
+        body:Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children:  [
           const Image(image: AssetImage('assets/images/page1.png')),
           SizedBox(height: Height/10,),
-          Text('Tracking' , style: TextStyle(fontSize:Height/30, color: const Color(0xffffffff), fontWeight: FontWeight.bold ),),
+          Text('Tracking' , style: TextStyle(fontSize:Height/30, color: Color(0xffffffff), fontWeight: FontWeight.bold ),),
           SizedBox(height: Height/60,),
           Padding(
             padding:  EdgeInsets.only(left: Width/15, right: Width/20),
@@ -79,6 +80,7 @@ class _Page1State extends State<Page1> {
             ],)
         ],
       ),
+        ),
     );
   }
 }
@@ -95,8 +97,9 @@ class _Page2State extends State<Page2> {
   Widget build(BuildContext context) {
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
-    return  Container(
-      child: Column(
+    return Scaffold(
+        body:Container(
+        child: Column(
         children:  [
           Padding(
             padding: EdgeInsets.symmetric(vertical:Height/10, horizontal: Width/20  ),
@@ -133,6 +136,7 @@ class _Page2State extends State<Page2> {
 
         ],
       ),
+        ),
     );
   }
 }
@@ -149,7 +153,8 @@ class _Page3State extends State<Page3> {
   Widget build(BuildContext context) {
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
-    return  Container(
+    return  Scaffold(
+     body: Container(
       child: Column(
         mainAxisAlignment:  MainAxisAlignment.center,
         children:  [
@@ -186,6 +191,7 @@ class _Page3State extends State<Page3> {
             ],)
         ],
       ),
+     )
     );
   }
 }

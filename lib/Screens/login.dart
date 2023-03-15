@@ -124,7 +124,7 @@ class Employeepage extends StatelessWidget {
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () {
                  checkdb();
-                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => statemanagement(),));
+                 // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => (),));
                 },
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
