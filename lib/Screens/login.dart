@@ -8,7 +8,7 @@ class Employeepage extends StatelessWidget {
 
    Employeepage({Key? key}) : super(key: key);
 
-  final _formKey = GlobalKey<FormState>();
+
    final empcontroller=TextEditingController();
    List database=[
      {'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
@@ -23,11 +23,10 @@ class Employeepage extends StatelessWidget {
            return;
          }
          else
-           {
+         {
 
          }
          print('Please enter the valid mail id');
-
        }
 
 
@@ -102,7 +101,7 @@ class Employeepage extends StatelessWidget {
                     ]
                 ),
                 child: Form(
-                  key: _formKey,
+
                   child: TextFormField(
                     controller: empcontroller,
 
@@ -124,7 +123,7 @@ class Employeepage extends StatelessWidget {
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () {
                  checkdb();
-                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => statemanagement(),));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => statemanagement(),));
                 },
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
