@@ -1,3 +1,5 @@
+import 'package:ats_beta/Screens/Splashscreen.dart';
+import 'package:ats_beta/Screens/login.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,59 +19,13 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor:Color(0xff3583cc),
       body: PageView(
         controller: Controller,
-        children: [
+        children: const [
           Page1(),
           Page2(),
           Page3(),
         ],
       ),
-      // body: Column(
-      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //   children: [
-      //     // page view
-      //     SizedBox(
-      //       height: Height/1.7,
-      //       child: PageView(
-      //         controller: Controller,
-      //         children: const [
-      //           Page1(),
-      //           Page2(),
-      //           Page3(),
-      //         ],
-      //       ),
-      //     ),
-      //     SizedBox(height: Height/25,),
-      //     // dot indicators
-      //     SmoothPageIndicator(
-      //       controller: Controller,
-      //       count: 3,
-      //       effect: ScrollingDotsEffect(
-      //         //activeDotColor: const Color(0xff1d2a40),
-      //         dotColor: Colors.deepPurple.shade100,
-      //         dotHeight: Height/60,
-      //         dotWidth: Width/40,
-      //         spacing: Width/20.5,
-      //         //verticalOffset: 50,
-      //
-      //       ),
-      //     ),
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //       children: [
-      //       Padding(
-      //         padding: EdgeInsets.only(right:Width/5),
-      //         child: TextButton(onPressed: (){},
-      //             child: Text('Skip',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),)),
-      //       ),
-      //        Padding(
-      //         padding: EdgeInsets.only(left: Width/5),
-      //         child: TextButton(onPressed: (){}, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
-      //         ),
-      //       )
-      //     ],)
-      //
-      //   ],
-      // ),
+
     );
   }
 }
@@ -104,12 +60,20 @@ class _Page1State extends State<Page1> {
             children: [
               Padding(
                 padding: EdgeInsets.only(right:Width/4,top: Height/9),
-                child: TextButton(onPressed: (){},
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                      (context) => splashscreen()
+                  )
+                  );
+                },
                     child: Text('Skip',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),)),
               ),
               Padding(
                 padding: EdgeInsets.only(left: Width/5, top: Height/9),
-                child: TextButton(onPressed: (){}, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                      (context) => const Page2()));
+                }, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
                 ),
               )
             ],)
@@ -151,12 +115,18 @@ class _Page2State extends State<Page2> {
             children: [
               Padding(
                 padding: EdgeInsets.only(right:Width/5 ,top: Height/9),
-                child: TextButton(onPressed: (){},
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                      (context) => const Page1()));
+                },
                     child: Text('Skip',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),)),
               ),
               Padding(
                 padding: EdgeInsets.only(left: Width/5, top: Height/9),
-                child: TextButton(onPressed: (){}, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                      (context) => const Page3()));
+                }, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
                 ),
               )
             ],)
@@ -199,12 +169,18 @@ class _Page3State extends State<Page3> {
             children: [
               Padding(
                 padding: EdgeInsets.only(right:Width/5, top: Height/8),
-                child: TextButton(onPressed: (){},
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                      (context) => const Page2()));
+                },
                     child: Text('Skip',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),)),
               ),
               Padding(
                 padding: EdgeInsets.only(left: Width/5, top: Height/8),
-                child: TextButton(onPressed: (){}, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                      (context) => Employeepage()));
+                }, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
                 ),
               )
             ],)
