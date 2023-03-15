@@ -44,6 +44,7 @@ class _Page1State extends State<Page1> {
     double Width = MediaQuery.of(context).size.width;
     return Scaffold(
         body:Container(
+          color: Colors.blue,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children:  [
@@ -99,6 +100,7 @@ class _Page2State extends State<Page2> {
     double Width = MediaQuery.of(context).size.width;
     return Scaffold(
         body:Container(
+          color: Colors.blue,
         child: Column(
         children:  [
           Padding(
@@ -155,6 +157,7 @@ class _Page3State extends State<Page3> {
     double Width = MediaQuery.of(context).size.width;
     return  Scaffold(
      body: Container(
+       color: Colors.blue,
       child: Column(
         mainAxisAlignment:  MainAxisAlignment.center,
         children:  [
