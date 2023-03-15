@@ -71,7 +71,7 @@ class _statemanagementState extends State<statemanagement> {
                     ),
                   ),
                 )],),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Container(height: 40,
                   width: 200,
                   child: ElevatedButton(style: ButtonStyle(
