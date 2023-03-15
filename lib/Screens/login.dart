@@ -1,16 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../main.dart';
 
-class Employeepage extends StatefulWidget {
-  const Employeepage({Key? key}) : super(key: key);
 
-  @override
-  State<Employeepage> createState() => _EmployeepageState();
-}
+class Employeepage extends StatelessWidget {
 
-class _EmployeepageState extends State<Employeepage> {
+   Employeepage({Key? key}) : super(key: key);
+
   final _formKey = GlobalKey<FormState>();
+   final empcontroller=TextEditingController();
+   List database=[
+     {'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
+     {'name':['thiru','devi','vini','suba','Aravi','venkat','aji','aji','sadhu','reha']}];
+
+   void checkdb()
+   {
+     for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
+       {
+         if ((database[0]['empid'] as List<String>)[i] == empcontroller.text.toString()) {
+           print("welcome to Sightspectrum");
+           return;
+         }
+         else
+           {
+
+         }
+         print('Please enter the valid mail id');
+
+       }
+
+
+   }
+
+
   @override
   Widget build(BuildContext context) {
     double  Height = MediaQuery.of(context).size.height;
@@ -27,8 +50,7 @@ class _EmployeepageState extends State<Employeepage> {
             ),
             Positioned(top: Height/20,
                 child: IconButton(icon:const Icon(Icons.arrow_back, color: Color(0xff004466),size: 25,) , onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(
-                  //     builder: (context) => const Otpcode()));
+
                 },)),
             Positioned(top:  Height/20,
               right: Width/10,
@@ -82,16 +104,10 @@ class _EmployeepageState extends State<Employeepage> {
                 child: Form(
                   key: _formKey,
                   child: TextFormField(
-                    // validator: (value) {
-                    //   if (value!.isEmpty && value.length<=10 ) {
-                    //     return 'Please Enter the mobile number';
-                    //   }
-                    //   else if (!RegExp('^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$') ){
-                    //
-                    //   }
-                    //   },
+                    controller: empcontroller,
+
                     inputFormatters: <TextInputFormatter>[
-                      //FilteringTextInputFormatter.allow(RegExp(r'^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$')),
+
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                     ],
                     keyboardType: TextInputType.number,
@@ -107,8 +123,8 @@ class _EmployeepageState extends State<Employeepage> {
             Positioned(bottom:Height/6,
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(
-                  //     builder: (context) => const punch()));
+                 checkdb();
+                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => statemanagement(),));
                 },
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
