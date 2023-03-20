@@ -54,7 +54,7 @@ class _Page1State extends State<Page1> {
           SizedBox(height: Height/60,),
           Padding(
             padding:  EdgeInsets.only(left: Width/15, right: Width/20),
-            child: Text('App is basedddddddddddd on tracking the location details of the employee login & logout time',
+            child: Text('App is basessssssssss on tracking the location details of the employee login & logout time',
                 style:TextStyle(color: const Color(0xffF5FAFD), fontSize: Height/30, fontWeight:  FontWeight.normal) ),
           ),
           Row(
