@@ -1,6 +1,7 @@
 import 'package:ats_beta/Screens/Splashscreen.dart';
 import 'package:ats_beta/Screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -19,12 +20,16 @@ class _HomeScreenState extends State<HomeScreen> {
        backgroundColor: Colors.lightBlue,
       body: PageView(
         controller: Controller,
-        children: const [
+        children:  [
           Page1(),
           Page2(),
           Page3(),
+
+
         ],
+
       ),
+
 
     );
   }
@@ -38,6 +43,7 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
+  final Controller = PageController();
   @override
   Widget build(BuildContext context) {
     double Height = MediaQuery.of(context).size.height;
@@ -57,6 +63,17 @@ class _Page1State extends State<Page1> {
             child: Text('App is basessssssssss on tracking the location details of the employee login & logout time',
                 style:TextStyle(color: const Color(0xffF5FAFD), fontSize: Height/30, fontWeight:  FontWeight.normal) ),
           ),
+        SizedBox(height: Height/50,),
+        SmoothPageIndicator(
+         controller: Controller,
+          count: 3,
+        effect: const WormEffect(
+          dotHeight: 16,
+          dotWidth: 16,
+          type: WormType.thin,
+          // strokeWidth: 5,
+        ),
+      ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
