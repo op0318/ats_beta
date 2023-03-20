@@ -22,7 +22,8 @@ class valid extends StatelessWidget {
           ),
           SizedBox(height :Height/80),
           RaisedButton(onPressed: (){},color: const Color(0xfff14141),
-            child:  const Text('Try Again'),),
+            child:  const Text('please'
+                'Try Again'),),
           Row(
             children:   [
               const Image(image: AssetImage('assets/images/page4(2).png')),
