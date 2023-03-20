@@ -205,7 +205,7 @@ class _Page3State extends State<Page3> {
                 child: TextButton(onPressed: (){
                   Navigator.pushReplacement(context, MaterialPageRoute(builder:
                       (context) => Employeepage()));
-                }, child:  Text('Next',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
+                }, child:  Text('Next addd',style: TextStyle(fontSize: Height/30, color: Color(0xffe6e6e6)),),
                 ),
               )
             ],)
