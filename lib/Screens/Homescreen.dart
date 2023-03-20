@@ -50,7 +50,7 @@ class _Page1State extends State<Page1> {
         children:  [
           const Image(image: AssetImage('assets/images/page1.png')),
           SizedBox(height: Height/10,),
-          Text('Tracking' , style: TextStyle(fontSize:Height/30, color: Color(0xffffffff), fontWeight: FontWeight.bold ),),
+          Text('Tracking and you are the next' , style: TextStyle(fontSize:Height/30, color: Color(0xffffffff), fontWeight: FontWeight.bold ),),
           SizedBox(height: Height/60,),
           Padding(
             padding:  EdgeInsets.only(left: Width/15, right: Width/20),
