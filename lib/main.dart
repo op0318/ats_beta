@@ -1,8 +1,8 @@
 
 
-import 'package:ats_beta/Screens/Splashscreen.dart';
+import 'package:ats_beta/Screens/WelcomePages/Splashscreen.dart';
 import 'package:ats_beta/Screens/Vaildcheck.dart';
-import 'package:ats_beta/Screens/login.dart';
+import 'package:ats_beta/Screens/Authentication/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../main.dart';
+import '../../main.dart';
 
 
 class Employeepage extends StatelessWidget {
