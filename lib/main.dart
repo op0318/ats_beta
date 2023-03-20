@@ -1,6 +1,7 @@
 
 
 import 'package:ats_beta/Screens/Splashscreen.dart';
+import 'package:ats_beta/Screens/Vaildcheck.dart';
 import 'package:ats_beta/Screens/login.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +14,10 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
     //  home: statemanagement(),
       home: splashscreen(),
+     // home:valid(),
     );
   }
 }
