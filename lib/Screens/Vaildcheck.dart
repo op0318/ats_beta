@@ -1,3 +1,4 @@
+import 'package:ats_beta/Screens/Authentication/login.dart';
 import 'package:flutter/material.dart';
 
 class valid extends StatelessWidget {
@@ -21,7 +22,9 @@ class valid extends StatelessWidget {
             child:  Text('your EmployeeID must be atleast 5 numbers long', style: TextStyle(color: const Color(0xffA19F9F),fontSize:Height/35, fontWeight:FontWeight.normal),),
           ),
           SizedBox(height :Height/80),
-          ElevatedButton(onPressed: (){},style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xfff14141))),
+          ElevatedButton(onPressed: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Employeepage()));
+          },style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xfff14141))),
             child:  const Text('please'
                 'Try Again'),),
           Row(
