@@ -85,7 +85,7 @@ class Employeepage extends StatelessWidget {
               child:const  Text('and confirm', style: TextStyle(color: Colors.white,fontSize: 18),),
             ),
             Positioned(
-              bottom: Height/2.6,
+              bottom: Height/2.8,
               left:  Width/4.5,
               child: Container(
                 height: Height / 15,
@@ -121,7 +121,7 @@ class Employeepage extends StatelessWidget {
                   ),
                 ),
               ),),
-            Positioned(bottom:Height/6,
+            Positioned(bottom:Height/7,
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () {
                  checkdb();
