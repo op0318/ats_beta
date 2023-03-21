@@ -1,8 +1,4 @@
-
-
 import 'package:ats_beta/Screens/WelcomePages/Splashscreen.dart';
-import 'package:ats_beta/Screens/Vaildcheck.dart';
-import 'package:ats_beta/Screens/Authentication/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,8 +11,8 @@ class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-    //  home: statemanagement(),
       home: splashscreen(),
+     debugShowCheckedModeBanner: false,
      // home:valid(),
     );
   }

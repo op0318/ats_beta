@@ -1,9 +1,4 @@
-import 'package:ats_beta/Widgets/SkipandNext.dart';
 import 'package:flutter/material.dart';
-
-import 'WelcomePage1.dart';
-import 'WelcomePage3.dart';
-
 
 class Page2 extends StatefulWidget {
   const Page2({Key? key}) : super(key: key);
@@ -13,17 +8,18 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
+
   @override
   Widget build(BuildContext context) {
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
     return Scaffold(
       body:Container(
-        color: Colors.blue,
+        color: Color(0xff367df7),
         child: Column(
           children:  [
             Padding(
-              padding: EdgeInsets.symmetric(vertical:Height/10, horizontal: Width/20  ),
+              padding: EdgeInsets.symmetric(vertical:Height/30, horizontal: Width/60  ),
               child: const Image(image: AssetImage('assets/images/page2.png')),
             ),
             Text('Monitoring' , style: TextStyle(fontSize:Height/30, color: const Color(0xffffffff), fontWeight: FontWeight.bold ),),
@@ -34,7 +30,8 @@ class _Page2State extends State<Page2> {
                 style:TextStyle(color:  const Color(0xffF5FAFD), fontSize: Height/30, fontWeight:  FontWeight.normal),
               ),
             ),
-            SkipAndNext()
+
+
 
           ],
         ),
