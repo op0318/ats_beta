@@ -1,7 +1,6 @@
 
 
-import 'dart:js';
-import 'package:path/path.dart' as Path;
+
 
 import 'package:ats_beta/Screens/Vaildcheck.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,8 @@
 import 'package:ats_beta/Screens/pages/page2.dart';
 import 'package:flutter/material.dart';
 
-import '../login.dart';
+import '../Authentication/login.dart';
+import '../WelcomePages/Splashscreen.dart';
 
 class Page3 extends StatefulWidget {
   const Page3({Key? key}) : super(key: key);

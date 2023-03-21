@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../Homescreen.dart';
-import '../Splashscreen.dart';
+import '../WelcomePages//Splashscreen.dart';
+
 
 class Page1 extends StatefulWidget {
   const Page1({Key? key}) : super(key: key);

@@ -17,7 +17,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
     //  home: statemanagement(),
-      home: SelectMapping(),
+      home: splashscreen(),
      // home:valid(),
     );
   }
