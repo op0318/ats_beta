@@ -49,12 +49,12 @@ class Employeepage extends StatelessWidget {
               width: Width,
 
             ),
-            Positioned(top: Height/20,
-                child: IconButton(icon:const Icon(Icons.arrow_back, color: Color(0xff004466),size: 25,) , onPressed: () {
-
-                },)),
+            // Positioned(top: Height/20,
+            //     child: IconButton(icon:const Icon(Icons.arrow_back, color: Color(0xff004466),size: 25,) , onPressed: () {
+            //
+            //     },)),
             Positioned(top:  Height/20,
-              right: Width/10,
+              right: Width/16,
               child:const Image(image: AssetImage('assets/images/Logo.png', ),) ,),
             Positioned(bottom: 0,
                 child: Container(
@@ -63,29 +63,29 @@ class Employeepage extends StatelessWidget {
                   decoration:   const BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: Color(0xff004466),
+                    color: Color(0xff1d8cbf),
                   ),
                 )
             ),
 
-            Positioned(left: Width/2.7,
+            Positioned(left: Width/2.8,
                 top: Height/6.5,
                 child: const Image(image: AssetImage('assets/images/atscircle.png'))
             ),
-            Positioned(bottom: Height/1.6,
-              left: Width/4.5,
+            Positioned(bottom: Height/1.7,
+              left: Width/4.6,
               child:const Text('Your employee id', style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
             ),
-            Positioned(bottom: Height/1.8,
+            Positioned(bottom: Height/1.9,
               left: Width/4.5,
               child:const Text('please enter your employee id ', style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.normal),),
             ),
-            Positioned(bottom: Height/2,
+            Positioned(bottom: Height/2.1,
               left: Width/4.5,
               child:const  Text('and confirm', style: TextStyle(color: Colors.white,fontSize: 18),),
             ),
             Positioned(
-              bottom: Height/2.6,
+              bottom: Height/2.8,
               left:  Width/4.5,
               child: Container(
                 height: Height / 15,
@@ -121,7 +121,7 @@ class Employeepage extends StatelessWidget {
                   ),
                 ),
               ),),
-            Positioned(bottom:Height/6,
+            Positioned(bottom:Height/7,
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () {
                  checkdb();

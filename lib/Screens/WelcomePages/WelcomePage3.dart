@@ -15,7 +15,7 @@ class _Page3State extends State<Page3> {
     double Width = MediaQuery.of(context).size.width;
     return  Scaffold(
         body: Container(
-          color: Color(0xff367df7),
+          color: Color(0xff1d8cbf),
           child: Column(
 
             children:  [
