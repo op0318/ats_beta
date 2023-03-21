@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../main.dart';
+import '../Vaildcheck.dart';
 
 
 class Employeepage extends StatelessWidget {
@@ -14,29 +15,30 @@ class Employeepage extends StatelessWidget {
      {'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
      {'name':['thiru','devi','vini','suba','Aravi','venkat','aji','aji','sadhu','reha']}];
 
-   void checkdb()
-   {
-     for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
-       {
-         if ((database[0]['empid'] as List<String>)[i] == empcontroller.text.toString()) {
-           print("welcome to Sightspectrum");
-           return;
-         }
-         else
-         {
-
-         }
-         print('Please enter the valid mail id');
-       }
-
-
-   }
 
 
   @override
   Widget build(BuildContext context) {
     double  Height = MediaQuery.of(context).size.height;
     double  Width =   MediaQuery.of(context).size.width;
+
+    void checkdb()
+    {
+      for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
+      {
+        if ((database[0]['empid'] as List<String>)[i] == empcontroller.text.toString()) {
+          print("welcome to Sightspectrum");
+          return;
+        }
+        else
+        {
+
+        }
+       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>valid()));
+      }
+
+
+    }
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
