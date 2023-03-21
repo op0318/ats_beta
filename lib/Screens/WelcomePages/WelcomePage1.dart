@@ -18,7 +18,7 @@ class _Page1State extends State<Page1> {
     double Width = MediaQuery.of(context).size.width;
     return Scaffold(
       body:Container(
-        color: Color(0xff367df7),
+        color: Color(0xff1d8cbf),
         child: Column(
 
           children:  [
@@ -31,23 +31,7 @@ class _Page1State extends State<Page1> {
               child: Text('App is based on tracking the location details of the employee login & logout time',
                   style:TextStyle(color: const Color(0xffF5FAFD), fontSize: Height/30, fontWeight:  FontWeight.normal) ),
             ),
-            // SizedBox(height: Height/30,),
-            // SmoothPageIndicator(
-            //   controller: Controller,
-            //   count: 3,
-            //   effect: WormEffect(
-            //     activeDotColor: Colors.red,
-            //     dotColor: Colors.deepPurple.shade100,
-            //     dotHeight:  Height/50,
-            //     dotWidth: Width/30,
-            //     spacing: 16,
-            //     //verticalOffset: 50,
-            //
-            //   ),
-            // ),
-            // SizedBox(height: Height/30,),
 
-           // SkipAndNext(),
           ],
         ),
       ),

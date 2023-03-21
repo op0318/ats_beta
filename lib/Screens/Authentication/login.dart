@@ -63,12 +63,12 @@ class Employeepage extends StatelessWidget {
                   decoration:   const BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: Color(0xff004466),
+                    color: Color(0xff1d8cbf),
                   ),
                 )
             ),
 
-            Positioned(left: Width/2.7,
+            Positioned(left: Width/2.8,
                 top: Height/6.5,
                 child: const Image(image: AssetImage('assets/images/atscircle.png'))
             ),
