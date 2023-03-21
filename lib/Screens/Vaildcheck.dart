@@ -21,7 +21,7 @@ class valid extends StatelessWidget {
             child:  Text('your EmployeeID must be atleast 5 numbers long', style: TextStyle(color: const Color(0xffA19F9F),fontSize:Height/35, fontWeight:FontWeight.normal),),
           ),
           SizedBox(height :Height/80),
-          RaisedButton(onPressed: (){},color: const Color(0xfff14141),
+          ElevatedButton(onPressed: (){},style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xfff14141))),
             child:  const Text('please'
                 'Try Again'),),
           Row(

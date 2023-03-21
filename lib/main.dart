@@ -1,5 +1,6 @@
 
 
+import 'package:ats_beta/Screens/Selectlocation.dart';
 import 'package:ats_beta/Screens/WelcomePages/Splashscreen.dart';
 import 'package:ats_beta/Screens/Vaildcheck.dart';
 import 'package:ats_beta/Screens/Authentication/login.dart';
@@ -16,7 +17,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
     //  home: statemanagement(),
-      home: splashscreen(),
+      home: SelectMapping(),
      // home:valid(),
     );
   }
