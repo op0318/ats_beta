@@ -1,3 +1,4 @@
+import 'package:ats_beta/Screens/Selectlocation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,7 +28,7 @@ class Employeepage extends StatelessWidget {
       for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
       {
         if ((database[0]['empid'] as List<String>)[i] == empcontroller.text.toString()) {
-          print("welcome to Sightspectrum");
+          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>SelectMapping()));
           return;
         }
         else

@@ -12,7 +12,7 @@ class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: SelectMapping(),
+      home: splashscreen(),
      debugShowCheckedModeBanner: false,
      // home:valid(),
     );
