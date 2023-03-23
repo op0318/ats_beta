@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../main.dart';
-import '../Vaildcheck.dart';
+import 'Vaildcheck.dart';
 
 
 class Employeepage extends StatelessWidget {

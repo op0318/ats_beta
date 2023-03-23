@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Authentication/login.dart';
+import 'login.dart';
 
 class valid extends StatelessWidget {
   const valid({Key? key}) : super(key: key);

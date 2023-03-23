@@ -1,4 +1,5 @@
 import 'package:ats_beta/Screens/Authentication/login.dart';
+import 'package:ats_beta/Screens/Dashboard/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -13,12 +14,17 @@ class SelectMapping extends StatefulWidget {
 
 class _SelectMappingState extends State<SelectMapping> {
   List locations=[
-    'Guindy office',
-    'Mepz office',
-    'Tidel office',
-    'Thanjavur office',
+    'Mountain View',
+    'Mepz ',
+    'Tidel',
+    'Thanjavur ',
     'Client Location',
     'Work from home'];
+
+
+
+
+
   var myvalue;
   String? Address;
   //function which is used ro get the latitude and the langitude
@@ -52,9 +58,11 @@ class _SelectMappingState extends State<SelectMapping> {
 print(placemark);
 Placemark place=placemark[0];
 setState(() {
-  Address ='${place.street},${place.subLocality},${place.locality},${place.postalCode}';
+  Address ='${place.locality}';
 
 });
+
+
 
 
 
@@ -63,6 +71,22 @@ setState(() {
   }
   @override
   Widget build(BuildContext context) {
+    void check()
+    {
+      if(Address==locations[0])
+      {
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Dashboard(),));
+        print('Welcome to guindy office');
+
+
+      }
+      else
+      {
+        print('you ar not at the correct location');
+      }
+
+
+    }
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -141,10 +165,15 @@ setState(() {
                           _determinePosition();
                           Position position=await _determinePosition();
                           GetAddressFromLatLong(position);
+                          check();
 
 
-                        print('you are selected ${myvalue}');
-                        print('you are currently in ${Address}');
+
+
+
+
+
+
                         },child: Text('OK',),),
                     )],
                 ),
