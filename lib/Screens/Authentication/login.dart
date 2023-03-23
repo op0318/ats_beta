@@ -2,12 +2,10 @@ import 'package:ats_beta/Screens/Selectlocation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../main.dart';
 import '../Vaildcheck.dart';
 
 
 class Employeepage extends StatelessWidget {
-
    Employeepage({Key? key}) : super(key: key);
 
 
@@ -48,12 +46,8 @@ class Employeepage extends StatelessWidget {
               color:const Color(0xffffffff),
               height: Height,
               width: Width,
-
             ),
-            // Positioned(top: Height/20,
-            //     child: IconButton(icon:const Icon(Icons.arrow_back, color: Color(0xff004466),size: 25,) , onPressed: () {
-            //
-            //     },)),
+
             Positioned(top:  Height/20,
               right: Width/16,
               child:const Image(image: AssetImage('assets/images/Logo.png', ),) ,),
@@ -64,7 +58,13 @@ class Employeepage extends StatelessWidget {
                   decoration:   const BoxDecoration(
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
-                    color: Color(0xff1d8cbf),
+                      gradient: LinearGradient(
+                          stops: [0.8, 1],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xff0185c8),
+                            Color(0xff004466),
+                          ])
                   ),
                 )
             ),

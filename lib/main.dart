@@ -1,4 +1,3 @@
-import 'package:ats_beta/Screens/Selectlocation.dart';
 import 'package:ats_beta/Screens/WelcomePages/Splashscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +12,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: splashscreen(),
-     debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
      // home:valid(),
     );
   }
