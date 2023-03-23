@@ -38,6 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   smooth_page_indicator: ^1.0.1
   page_view_dot_indicator: ^2.1.0
+  #geo locator used to find the user latitude and the langitude
+  geolocator: ^9.0.2
+  #geo coding is used to get the address of the user
+  geocoding:
 
 dev_dependencies:
   flutter_test:
