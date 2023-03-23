@@ -23,51 +23,58 @@ class _HomeScreenState extends State<HomeScreen> {
     return  Scaffold(
        backgroundColor: Color(0xff367df7),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: Height/1.5,
-                  width: Width,
-                  child: PageView(
-                  controller: Controller,
-                    children:  const [
-
-                      Page1(),
-                      Page2(),
-                      Page3(),
-                    ],
-
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(top:Height/90),
-                  child: SmoothPageIndicator(
-                    controller: Controller,
-                    count: 3,
-                    effect: SwapEffect(
-                      activeDotColor: Colors.red,
-                      dotColor: Colors.deepPurple.shade100,
-                      dotHeight:  Height/60,
-                      dotWidth: Width/40,
-                      //spacing: 16,
-                      //verticalOffset: 50,
-
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(top: Height/70.5),
-                  child: SkipAndNext(),
-                )
-              ],
+        child: SingleChildScrollView(
+          child: Container(
+            decoration:  const BoxDecoration(
+                gradient: LinearGradient(
+                    stops: [0.8, 1],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xff0185c8),
+                      Color(0xff004466),
+                    ])
             ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                     height: Height/1.6,
+                      width: Width,
+                      child: PageView(
+                      controller: Controller,
+                        children:  const [
+                          Page1(),
+                          Page2(),
+                          Page3(),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(top: Height/11),
+                      child: SmoothPageIndicator(
+                        controller: Controller,
+                        count: 3,
+                        effect: SwapEffect(
+                          activeDotColor: const Color(0xff004466),
+                          dotColor: Colors.deepPurple.shade100,
+                          dotHeight:  Height/60,
+                          dotWidth: Width/40,
+                          //spacing: 16,
+                          //verticalOffset: 50,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(top: Height/12),
+                      child: const SkipAndNext(),
+                    )
+                  ],
+                ),
+          ),
+        ),
       ),
           // dot indicators
-
-
-
-
     );
   }
 }

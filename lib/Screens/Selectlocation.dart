@@ -91,7 +91,7 @@ setState(() {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: Color.fromRGBO(1, 119, 178, 1),
+        color: const Color.fromRGBO(1, 119, 178, 1),
         child: Center(
           child:
           Container(
@@ -99,16 +99,15 @@ setState(() {
           BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Colors.white),
-            margin: EdgeInsets.only(left: 6,right: 6),
-            padding: EdgeInsets.only(top: 20),
+            margin: const EdgeInsets.only(left: 6,right: 6),
+            padding: const EdgeInsets.only(top: 20),
             height: 580,
             width: 420,
             child: Column(
 
               children: [
-                Text('Select Location',style: TextStyle(fontSize: 33,fontWeight: FontWeight.bold),
+                const Text('Select Location',style: TextStyle(fontSize: 33,fontWeight: FontWeight.bold),
                 ),
-
               SizedBox(height: 400,width: 400,child:
               Container(
                 color: Colors.white,
@@ -147,7 +146,7 @@ setState(() {
 
                         child: Center(child: TextButton(onPressed: (){
                           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Employeepage(),));
-                        },child: Text("Cancel",style: TextStyle(
+                        },child: const Text("Cancel",style: TextStyle(
                           fontSize: 20,color: Color.fromRGBO(0,68,102,1)
 
                         ),)),),
@@ -160,8 +159,10 @@ setState(() {
                     Container(height: 40,
                       width: 140,
                       child: ElevatedButton(
-                        style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color.fromRGBO(0,68,102,1))),
-                        onPressed: () async {
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color.fromRGBO(0,68,102,1))),
+                          onPressed: () async {
                           _determinePosition();
                           Position position=await _determinePosition();
                           GetAddressFromLatLong(position);
