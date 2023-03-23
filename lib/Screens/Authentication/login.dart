@@ -35,8 +35,6 @@ class Employeepage extends StatelessWidget {
         }
        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>valid()));
       }
-
-
     }
     return Scaffold(
       body: SingleChildScrollView(
@@ -47,10 +45,11 @@ class Employeepage extends StatelessWidget {
               height: Height,
               width: Width,
             ),
-
             Positioned(top:  Height/20,
-              right: Width/16,
-              child:const Image(image: AssetImage('assets/images/Logo.png', ),) ,),
+              right: Width/10,left:Width/15 ,
+              child:const Image(image: AssetImage('assets/images/Logo.png',),
+              ) ,
+            ),
             Positioned(bottom: 0,
                 child: Container(
                   height: Height/1.3,
@@ -59,16 +58,15 @@ class Employeepage extends StatelessWidget {
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(30),
                         topRight: Radius.circular(30)),
                       gradient: LinearGradient(
-                          stops: [0.8, 1],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                          stops: [0.1, 1],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
                           colors: [Color(0xff0185c8),
                             Color(0xff004466),
                           ])
                   ),
                 )
             ),
-
             Positioned(left: Width/2.8,
                 top: Height/6.5,
                 child: const Image(image: AssetImage('assets/images/atscircle.png'))
