@@ -103,12 +103,9 @@ class Employeepage extends StatelessWidget {
                     ]
                 ),
                 child: Form(
-
                   child: TextFormField(
                     controller: empcontroller,
-
                     inputFormatters: <TextInputFormatter>[
-
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                     ],
                     keyboardType: TextInputType.number,
@@ -136,6 +133,5 @@ class Employeepage extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

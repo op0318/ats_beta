@@ -9,8 +9,6 @@ class SelectMapping extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       color: Colors.blue,
-
-
     );
   }
 }
