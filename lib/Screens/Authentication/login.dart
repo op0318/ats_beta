@@ -2,7 +2,8 @@ import 'package:ats_beta/Screens/Selectlocation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../Vaildcheck.dart';
+
+import 'Vaildcheck.dart';
 
 
 class Employeepage extends StatelessWidget {

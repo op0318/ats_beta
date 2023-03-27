@@ -76,7 +76,7 @@ setState(() {
       if(Address==locations[0])
       {
         Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Dashboard(),));
-        print('Welcome to guindy office');
+        print('Welcome to office');
 
 
       }
