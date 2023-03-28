@@ -39,7 +39,7 @@ class _DashboardState extends State<Dashboard> {
                       ElevatedButton(
 
                           onPressed: (){}, child: Text('')),
-                      Text('Saravanan',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
+                      Text('devi',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
                       Text('10801',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)],),
 
                 ),
