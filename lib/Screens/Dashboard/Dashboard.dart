@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(width: 80,),
                 Padding(
                   padding: const EdgeInsets.only(top: 0),
-                  child: Text('18-03-1998',style: TextStyle(color: Colors.grey,
+                  child: Text('1.1.2001',style: TextStyle(color: Colors.grey,
                     fontSize: 20,)
                   ),
                 )],))),
