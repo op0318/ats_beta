@@ -36,9 +36,7 @@ class _DashboardState extends State<Dashboard> {
                     crossAxisAlignment: CrossAxisAlignment.start,
 
                     children: [
-                      ElevatedButton(
 
-                          onPressed: (){}, child: Text('')),
                       Text('Saravanan',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold)),
                       Text('10801',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)],),
 
@@ -46,7 +44,7 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(width: 80,),
                 Padding(
                   padding: const EdgeInsets.only(top: 0),
-                  child: Text('18-03-1998',style: TextStyle(color: Colors.grey,
+                  child: Text('20-04-1998',style: TextStyle(color: Colors.grey,
                     fontSize: 20,)
                   ),
                 )],))),
