@@ -73,11 +73,11 @@ class valid extends StatelessWidget {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left: Width/10),
-                  child: Image(image: AssetImage('assets/images/page4(2).png'), width: Width/2.5, height: Height/4,),
+                  child: Image(image: const AssetImage('assets/images/page4(2).png'), width: Width/2.5, height: Height/4,),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(right: Width/25,),
-                  child: Image(image: AssetImage('assets/images/page4(3).png')),
+                  child: const Image(image: AssetImage('assets/images/page4(3).png')),
                 ),
             ],)
           ],

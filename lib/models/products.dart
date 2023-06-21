@@ -20,3 +20,5 @@ class Product{
         name = firestore['name'],
         price = firestore['price'];
 }
+
+

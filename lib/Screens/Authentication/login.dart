@@ -1,16 +1,18 @@
+
+
 import 'package:ats_beta/Screens/Selectlocation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-
 import 'Vaildcheck.dart';
 
 
 class Employeepage extends StatelessWidget {
    Employeepage({Key? key}) : super(key: key);
 
-
    final empcontroller=TextEditingController();
+     int ?  myid;
    List database=[
      {'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
      {'name':['thiru','devi','vini','suba','Aravi','venkat','aji','aji','sadhu','reha']}];
@@ -19,9 +21,8 @@ class Employeepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double  Height = MediaQuery.of(context).size.height;
-    double  Width =   MediaQuery.of(context).size.width;
-
+    double Height = MediaQuery.of(context).size.height;
+    double Width = MediaQuery.of(context).size.width;
     void checkdb()
     {
       for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
@@ -36,6 +37,34 @@ class Employeepage extends StatelessWidget {
         }
        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>valid()));
       }
+    }
+    // Future<void> Getdetails() async {
+    //   // String MyDocid = 'Employee.Empid';
+    //   // DocumentSnapshot documentSnapshot;
+    //   // await FirebaseFirestore.instance.collection("Employee").doc(MyDocid)
+    //   //     .get()
+    //   // .then((value) => {
+    //   //   documentSnapshot = value,
+    //   //   print(value.data())
+    //   // }
+    //   //
+    //   // );
+    //   final CollectionReference users = FirebaseFirestore.instance.collection('Employee');
+    // }
+   final currentUser = FirebaseAuth.instance;
+    void getUsers() {
+      CollectionReference Employees = FirebaseFirestore.instance.collection('Employee').doc('0wmfoll07el0tLda8HUC').get() as CollectionReference<Object?>;
+      // Validate data
+      if (Employees != null) {
+        Map<String, dynamic> userData = Employees.id as Map<String, dynamic>;
+
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SelectMapping()));
+        }
+      Employees.get().then((QuerySnapshot querySnapshot) => {
+        querySnapshot.docs.forEach((doc) {
+          print(doc.data());
+        })
+      });
     }
     return Scaffold(
       body: SingleChildScrollView(
@@ -88,8 +117,8 @@ class Employeepage extends StatelessWidget {
               bottom: Height/2.8,
               left:  Width/4.5,
               child: Container(
-                height: Height / 15,
-                width: Width / 1.7,
+                height: Height/15,
+                width: Width/1.7,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
@@ -115,23 +144,91 @@ class Employeepage extends StatelessWidget {
                       // border: OutlineInputBorder()
                       border: InputBorder.none,
                     ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please Enter Employee id';
+                      }
+                      return null;
+                    },
                   ),
                 ),
               ),),
             Positioned(bottom:Height/7,
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () {
-                 checkdb();
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => statemanagement(),));
+                  checkdb();
+                 // if(Employees.exists){
+                 //   getUsers();
+                 //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                 //     builder: (context) => const SelectMapping(),));
+                 // }
+                 // else{
+                 //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                 //     builder: (context) => const valid(),));
+                 // }
+
+
+                  // fetch('');
+                  //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //           builder: (context) => const SelectMapping(),));
+                  // }
+                  // else {
+                  //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  //     builder: (context) => const valid(),));
+                  //
+                  // }
+                 //  if(empcontroller.text.toString() ==DataCell.empty) {
+                 //   // fetch(myid);
+                 //    getUsers();
+                 //    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                 //      builder: (context) => const SelectMapping(),));
+                 //  }
+                 // else{
+                 //    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                 //    builder: (context) => const valid(),));
+                 //  }
+
                 },
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
                   ),
                   backgroundColor: Colors.white,
-                  child: const Icon(Icons.arrow_forward, color: Color(0xff004466),), ))
-          ],
-        ),
+                  // child: FutureBuilder(
+                  //   future: fetch(myid),
+                  //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  //     if (snapshot.connectionState == ConnectionState.done) {
+                  //      // Map<String, dynamic> data = snapshot.data!.data() as Map<String, dynamic>;
+                  //       return Text("$myid");
+                  //
+                  //     }
+                  //
+                  //     return Text('');
+                  //   },
+                  // ),
+                  child: const Icon(Icons.arrow_forward, color: Color(0xff004466),), )
+
+            )
+       ]
       ),
+      )
     );
   }
+  fetch(int? myid)  async{
+    final firebaseuser = FirebaseAuth.instance.currentUser;
+    if(firebaseuser!=null){
+    await FirebaseFirestore.instance.collection('Employee').doc(firebaseuser.refreshToken)
+        .get().then((documentsnapshot) {
+          myid = documentsnapshot.data() as int;
+          print(myid);
+    }
+    ).catchError((e){
+      print(e);
+    });
+    }
+  }
+
+   Future<void> Secure()async {
+
+   }
 }
+
