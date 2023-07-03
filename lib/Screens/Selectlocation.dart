@@ -1,5 +1,5 @@
 import 'package:ats_beta/Screens/Authentication/login.dart';
-import 'package:ats_beta/Screens/Dashboard/Dashboard.dart';
+//import 'package:ats_beta/Screens/Dashboard/Dashboard.dart';
 import 'package:ats_beta/Screens/BottomDrawer/DashboardLeave.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -9,7 +9,9 @@ import 'Dashboard/Dashbordpunch.dart';
 
 
 class SelectMapping extends StatefulWidget {
-  const SelectMapping({Key? key}) : super(key: key);
+  const SelectMapping({Key? key,}) : super(key: key);
+ 
+
 
   @override
   State<SelectMapping> createState() => _SelectMappingState();
@@ -26,11 +28,12 @@ class _SelectMappingState extends State<SelectMapping> {
 
   var myvalue;
   String? Address;
+
+  get database => null;
   //function which is used ro get the latitude and the langitude
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
-
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {

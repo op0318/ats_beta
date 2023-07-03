@@ -3,9 +3,10 @@ import 'package:flutter/services.dart';
 import '../Dashboard/Dashbordpunch.dart';
 import 'package:intl/intl.dart';
 
+import 'LeaveRequest.dart';
+
 class ApplyLeave extends StatefulWidget {
-  const ApplyLeave({Key? key,
-  }) : super(key: key);
+  const ApplyLeave({Key? key,}) : super(key: key);
   //final DateTime initialDate;
 
 
@@ -303,7 +304,7 @@ class _ApplyLeaveState extends State<ApplyLeave> {
                             });
                             }else{
                             print("Date is not selected");
-                            }
+                             }
                             },
                             icon:Padding(
                               padding: EdgeInsets.only(bottom:Height/5),
@@ -349,7 +350,10 @@ class _ApplyLeaveState extends State<ApplyLeave> {
                         borderRadius: BorderRadius.circular(Width/40)),
                     minimumSize: Size(Width/2.5, Height/15), //////// HERE
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) =>const LeaveRequest()));
+                  },
                   child: Text('Submit', style:  TextStyle(color: const Color(0xffffffff), fontWeight: FontWeight.w700, fontSize: Height/25),)),
             )
 

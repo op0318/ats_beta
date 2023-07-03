@@ -47,7 +47,9 @@ dependencies:
   uuid: ^3.0.7
   stacked_chart: ^0.0.6
   dotted_line: ^3.1.0
+  fluttertoast: ^8.2.1
   step_progress_indicator: ^1.0.2
+  intl: ^0.18.1
   #geo locator used to find the user latitude and the longitude
   geolocator: ^9.0.2
   #geo coding is used to get the address of the user

@@ -1,6 +1,6 @@
+// ignore_for_file: overridden_fields
 
 import 'dart:async';
-
 import 'dart:math';
 import 'package:ats_beta/Screens/BottomDrawer/DashboardLeave.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +8,16 @@ import 'package:stacked_chart/stacked_chart.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../BottomDrawer/ApplyLeave.dart';
+import '../BottomDrawer/MyTickets.dart';
+import '../BottomDrawer/Myteams.dart';
+import '../BottomDrawer/Notifications.dart';
+import '../BottomDrawer/personalDetails.dart';
 
 class punchin extends StatefulWidget {
-  const punchin({Key? key, this.Address}) : super(key: key);
+  const punchin({Key? key, this.Address, }) : super(key: key);
   final Address;
+      //final List datas ;
+
   @override
   State<punchin> createState() => _punchinState();
 }
@@ -21,6 +27,9 @@ class _punchinState extends State<punchin> {
     bool isPunchedIn = false;
     DateTime? punchInTime;
     DateTime? punchOutTime;
+    String ? data;
+
+
     //bool _isDrawerOpen = false;
 
   @override
@@ -29,10 +38,11 @@ class _punchinState extends State<punchin> {
     super.initState();
     setState(() {
       location =widget.Address.toString();
+     // data = widget.datas .toList() ;
+
     });
   }
     String hoursString = "00", minuteString = "00", secondString = "00";
-
     int hours = 0, minutes = 0, seconds = 0;
     bool isTimerRunning = false, isResetButtonVisible = false;
     late Timer _timer;
@@ -45,7 +55,6 @@ class _punchinState extends State<punchin> {
         _startSecond();
       });
     }
-
     void pauseTimer() {
       _timer.cancel();
       setState(() {
@@ -53,7 +62,6 @@ class _punchinState extends State<punchin> {
       });
       isResetButtonVisible = checkValues();
     }
-
     void _startSecond() {
       setState(() {
         if (seconds < 59) {
@@ -67,7 +75,6 @@ class _punchinState extends State<punchin> {
         }
       });
     }
-
     void _startMinute() {
       setState(() {
         if (minutes < 59) {
@@ -76,14 +83,13 @@ class _punchinState extends State<punchin> {
           minutes++;
           minuteString = minutes.toString();
           if (minuteString.length == 1) {
-            minuteString = "0" + minuteString;
+            minuteString = "0$minuteString";
           }
         } else {
           _starHour();
         }
       });
     }
-
     void _starHour() {
       setState(() {
         seconds = 0;
@@ -97,7 +103,6 @@ class _punchinState extends State<punchin> {
         }
       });
     }
-
     void resetTimer() {
       _timer.cancel();
       setState(() {
@@ -110,7 +115,6 @@ class _punchinState extends State<punchin> {
         isResetButtonVisible = false;
       });
     }
-
     bool checkValues() {
       if (seconds != 0 || minutes != 0 || hours != 0) {
         return true;
@@ -120,7 +124,6 @@ class _punchinState extends State<punchin> {
     }
     @override
     Widget build(BuildContext context) {
-
     DateTime now = DateTime.now();
     String formattedDate = "${_formatDigits(now.day)}-${_formatDigits(now.month)}-${now.year}";
     double Height = MediaQuery.of(context).size.height;
@@ -139,7 +142,7 @@ class _punchinState extends State<punchin> {
                   SizedBox(width: Width/12,),
                   Column(
                     children: [
-                      Text('Saravanan' ,style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
+                     Text('$data' ,style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
                       Text('10801' ,style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
                     ],
                   ),
@@ -187,9 +190,6 @@ class _punchinState extends State<punchin> {
                           isPunchedIn = true;
                         }
                       });
-
-
-
                   },
                     child: Text(isPunchedIn ? 'Punch-Out' : 'Punch-In'),
                   ),
@@ -206,8 +206,8 @@ class _punchinState extends State<punchin> {
                             totalSteps: 35,
                             currentStep: 1,
                            // padding : Height/2,
-                            selectedColor: Color(0xff9BD936),
-                            unselectedColor: Color(0xff1A55ED),
+                            selectedColor: const Color(0xff9BD936),
+                            unselectedColor: const Color(0xff1A55ED),
                             selectedStepSize: Height/50,
                             unselectedStepSize: Width/25,
                             width: Width/2.2,
@@ -340,7 +340,7 @@ class _punchinState extends State<punchin> {
          children: [
            Text('Punch Out',
              style: TextStyle(fontSize: heightsize/25,
-               fontWeight: FontWeight.w700, color: Color(0xff004466)
+               fontWeight: FontWeight.w700, color: const Color(0xff004466)
              ),
            ),
            SizedBox(height: heightsize/70,),
@@ -376,7 +376,7 @@ class _punchinState extends State<punchin> {
                  Navigator.of(context).pop();
                });
              },
-             child: Text('OK', style: TextStyle(color:Color(0xffffffff), fontSize: heightsize/25),),
+             child: Text('OK', style: TextStyle(color:const Color(0xffffffff), fontSize: heightsize/25),),
            ),
            SizedBox(height: heightsize/25,),
          ],
@@ -403,7 +403,7 @@ Widget customDrawer(BuildContext context){
   return Drawer(
     width: Width/2,
     backgroundColor: const Color(0xff004466),
-    child: Container(
+    child: SizedBox(
       height: Height,
       width: Width/4,
       child: ListView(
@@ -414,13 +414,13 @@ Widget customDrawer(BuildContext context){
               child: const Icon(Icons.cancel, color:  Color(0xffffffff),),
             ),
             onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const punchin()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => punchin()));
             },
           ),
           ListTile(
             title: const Text("Apply Leave", style: TextStyle(color:Color(0xffffffff)),),
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>ApplyLeave()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const ApplyLeave()));
             },
           ),
           ListTile(
@@ -433,24 +433,25 @@ Widget customDrawer(BuildContext context){
             title: const Text("personal Details",style: TextStyle(color:Color(0xffffffff))  ),
             onTap: (){
               // Navigator.of(context).pop();
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const PersonalDetails()));
             },
           ),
           ListTile(
-            title: const Text("My Team", style: TextStyle(color:Color(0xffffffff))),
+            title: const Text("My Teams", style: TextStyle(color:Color(0xffffffff))),
             onTap: (){
-              // Navigator.of(context).pop();
+             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const myteams()));
             },
           ),
           ListTile(
             title: const Text("Notifications", style: TextStyle(color:Color(0xffffffff))),
             onTap: (){
-              //Navigator.of(context).pop();
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const notifications()));
             },
           ),
           ListTile(
             title: const Text("My Tickets", style: TextStyle(color:Color(0xffffffff))),
             onTap: (){
-              // Navigator.of(context).pop();
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const MyTickets()));
             },
           )
         ],
@@ -476,7 +477,7 @@ Widget Logoutdialog(BuildContext context){
           Row(
             children: [
               Material(
-                elevation: 5,
+              elevation: 5,
                 color: const Color(0xff1643f7),
                 borderRadius: BorderRadius.circular(heightsize/70,),
                 child: SizedBox(height: heightsize/20,width: widthsize/3,
@@ -501,7 +502,7 @@ Widget Logoutdialog(BuildContext context){
                   // // }
                   //  );
                 },
-                child: Text('Cancel', style: TextStyle(color:Color (0xffffffff), fontSize: heightsize/25),),
+                child: Text('Cancel', style: TextStyle(color:const Color (0xffffffff), fontSize: heightsize/25),),
               ),
             ],
           ),
@@ -522,7 +523,7 @@ Future <void> dialogBuilder(BuildContext context) async {
         Future.delayed( const Duration(seconds: 7), () {
           Navigator.of(context).pop(true);
         });
-        return  Container(
+        return  SizedBox(
           height: heightsize/1.2,
           width: Widthsize/1.8,
           child: AlertDialog(
@@ -551,23 +552,22 @@ Widget buildMyNavBar(BuildContext context) {
         IconButton(onPressed:(){
           Navigator.pushReplacement(context, MaterialPageRoute(
               builder: (context) => customDrawer(context)));
-        }, icon:ImageIcon(const AssetImage('assets/images/Listicon.png'),size:Height/25,color: Color(0xffffffff),)),
+        }, icon:ImageIcon(const AssetImage('assets/images/Listicon.png'),size:Height/25,color: const Color(0xffffffff),)),
         Container(
           height: Height/10,
           width: Width/6,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Height/20),
             color: const Color(0xffffffff),
-
           ),
           child:IconButton(onPressed: (){
             // Navigator.pushReplacement(context, MaterialPageRoute(
             //     builder: (context) => Logout()));
-          }, icon: Icon(Icons.home_outlined, size: Height/17,color: Color(0xff004466),)),
+          }, icon: Icon(Icons.home_outlined, size: Height/17,color: const Color(0xff004466),)),
         ),
         IconButton(onPressed: (){
           Logoutdialog(context);
-        }, icon: Icon(Icons.logout, size: Height/20,color: Color(0xffffffff),)),
+        }, icon: Icon(Icons.logout, size: Height/20,color: const Color(0xffffffff),)),
 
       ],
     ),

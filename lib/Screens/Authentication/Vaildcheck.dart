@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 import 'login.dart';
 
 
-class valid extends StatelessWidget {
-  const valid({Key? key}) : super(key: key);
+class Valid extends StatelessWidget {
+  const Valid({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,7 @@ class valid extends StatelessWidget {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left: Width/20),
-                  child: Container(height: Height/60,width: Width/40, 
-
+                  child: Container(height: Height/60,width: Width/40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: const Color(0xffA19F9F),
