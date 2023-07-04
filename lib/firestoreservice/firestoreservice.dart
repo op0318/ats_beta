@@ -8,10 +8,6 @@ class Firestoreservice{
   final FirebaseFirestore _db =  FirebaseFirestore.instance;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-
-
-
   get match => null;
 
   Future<void> saveProduct(Product product){

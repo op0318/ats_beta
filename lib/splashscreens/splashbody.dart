@@ -1,7 +1,6 @@
 import 'package:ats_beta/Screens/Homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screens/Authentication/login.dart';
@@ -23,7 +22,7 @@ class _SplashBodyState extends State<SplashBody>
   bool startFirst = false;
   bool startSecond = false;
   bool startFinalCircle = false;
-  late int mobiledata ;
+  int? mobiledata;
 
   @override
   void initState() {
@@ -166,14 +165,7 @@ class _SplashBodyState extends State<SplashBody>
                           color: Color(0xffffffff),
                           shape: BoxShape.circle,
                         ),
-                        //     child: Center(
-                        //
-                        //       child:const CircularProgressIndicator(
-                        //         color: Color(0xff004466),
-                        //         strokeWidth:15,
-                        //         value: 10,
-                        //     )
-                        // ),
+
                         child: const Center(
                           child: Text('ATS',style: TextStyle(
                             color: Color(0xff004466),
@@ -184,18 +176,6 @@ class _SplashBodyState extends State<SplashBody>
                       ),
                     ),
 
-                    //  Positioned(
-                    //   bottom: height/12,
-                    //   right:  width/2,
-                    // child: Text(
-                    //   'ATS',
-                    //   style: TextStyle(
-                    //     color: Color(0xff004466),
-                    //     fontWeight: FontWeight.bold,
-                    //     fontSize: 30,
-                    //   ),
-                    // ),
-                    // )
                   ],
                 )
             );

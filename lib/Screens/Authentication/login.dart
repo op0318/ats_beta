@@ -20,13 +20,14 @@ class Employeepage extends StatefulWidget {
 
 class _EmployeepageState extends State<Employeepage> {
    TextEditingController empcontroller=TextEditingController();
+   final FirebaseAuth _auth = FirebaseAuth.instance;
    final formKey = GlobalKey();
-   final user = FirebaseAuth.instance.currentUser?.uid;
+
   // Employees LoggedinUser = Employees(Empid:Empid);
 
+   String? userId = FirebaseAuth.instance.currentUser?.uid;
+   getData(String s) async{
 
-   getData() async{
-     String userId = FirebaseAuth.instance.currentUser!.uid;
      return FirebaseFirestore.instance.collection('Employee').doc(userId).get().then((value) {
        Fluttertoast.showToast(msg: 'Login Successfully');
        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const SelectMapping() ))
@@ -38,8 +39,8 @@ class _EmployeepageState extends State<Employeepage> {
    }
 
 
-   List database=[
-     {'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
+
+   List database=[{'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
      {'name':['thiru','devi','vini','suba','Aravind','venkatesh','aji','aji','sadhu','reha']}];
 
 
@@ -166,18 +167,27 @@ class _EmployeepageState extends State<Employeepage> {
             Positioned(bottom:Height/7,
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () async{
-                  DocumentSnapshot docSnapshot = await FirebaseFirestore.instance.collection('Employee').doc(user).get();
-                  if (docSnapshot.exists && docSnapshot.data() != null) {
-                    // Retrieve the data from the document
-                    Map<String, dynamic>? data = docSnapshot.data() as Map<String, dynamic>?;
-                    // Perform a null check on the field you want to access
-                    if (data != null && data.containsKey('Empid')) {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const SelectMapping() ));
-                      // Access the field value
-                      // Do something with the fieldValue
-                      print(data);
-                    }
-                  }
+                  // try {
+                  //   DocumentSnapshot docSnapshot = await FirebaseFirestore
+                  //       .instance.collection('Employee').doc(user).get();
+                  //   if (docSnapshot.exists && docSnapshot.data() != null) {
+                  //     // Retrieve the data from the document
+                  //     Map<String, dynamic>? data = docSnapshot.data() as Map<String, dynamic>?;
+                  //     // Perform a null check on the field you want to access
+                  //     if (data != null && data.containsKey('Empid')) {
+                  //       data = empcontroller.text.toString() as Map<String, dynamic>?;
+                  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SelectMapping()));
+                  //       // Access the field value
+                  //       // Do something with the fieldValue
+                  //       print(data);
+                  //     }
+                  //   }
+                  //   //check();
+                  // }
+                  // catch(e){
+                  //   print(e);
+                  // }
+                  getData(userId =empcontroller.text );
                 },
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
