@@ -49,6 +49,7 @@ dependencies:
   dotted_line: ^3.1.0
   fluttertoast: ^8.2.1
   step_progress_indicator: ^1.0.2
+  image_picker: ^1.0.0
   intl: ^0.18.1
   #geo locator used to find the user latitude and the longitude
   geolocator: ^9.0.2

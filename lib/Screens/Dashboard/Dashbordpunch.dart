@@ -6,7 +6,7 @@ import 'package:ats_beta/Screens/BottomDrawer/DashboardLeave.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_chart/stacked_chart.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
+import 'package:image_picker/image_picker.dart';
 import '../BottomDrawer/ApplyLeave.dart';
 import '../BottomDrawer/MyTickets.dart';
 import '../BottomDrawer/Myteams.dart';
@@ -28,6 +28,7 @@ class _punchinState extends State<punchin> {
     DateTime? punchInTime;
     DateTime? punchOutTime;
     String ? data;
+
 
 
     //bool _isDrawerOpen = false;
@@ -414,7 +415,7 @@ Widget customDrawer(BuildContext context){
               child: const Icon(Icons.cancel, color:  Color(0xffffffff),),
             ),
             onTap: (){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => punchin()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const punchin()));
             },
           ),
           ListTile(
@@ -568,7 +569,6 @@ Widget buildMyNavBar(BuildContext context) {
         IconButton(onPressed: (){
           Logoutdialog(context);
         }, icon: Icon(Icons.logout, size: Height/20,color: const Color(0xffffffff),)),
-
       ],
     ),
 
