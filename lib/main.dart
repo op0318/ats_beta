@@ -1,9 +1,14 @@
-import 'package:ats_beta/Screens/Dashboard/Dashboard.dart';
-import 'package:ats_beta/Screens/WelcomePages/Splashscreen.dart';
-import 'package:ats_beta/test.dart';
+import 'package:ats_beta/firestoreservice/firestoreservice.dart';
+import 'package:ats_beta/provider/productprovider.dart';
+import 'package:ats_beta/sample/products.dart';
+import 'package:ats_beta/splashscreens/splash.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyHome());
 }
 
@@ -12,15 +17,22 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      home: testsss(),
-      debugShowCheckedModeBanner: false,
-     // home:valid(),
+    final firestoreservice = Firestoreservice();
+    return  MultiProvider(
+      providers:[
+      ChangeNotifierProvider(create: (context) => ProductProvider(),),
+      StreamProvider(create: (context)=> firestoreservice.getProducts(), initialData: [Products()],)
+    ],
+        child:  const MaterialApp(
+          home: Splshscreen(),
+        debugShowCheckedModeBanner: false,
+     ),
     );
   }
 }
 
-//THis is a check
+
+
 
 
 

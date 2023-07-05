@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 import 'login.dart';
 
 
-class valid extends StatelessWidget {
-  const valid({Key? key}) : super(key: key);
+class Valid extends StatelessWidget {
+  const Valid({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,7 @@ class valid extends StatelessWidget {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left: Width/20),
-                  child: Container(height: Height/60,width: Width/40, 
-
+                  child: Container(height: Height/60,width: Width/40,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: const Color(0xffA19F9F),
@@ -73,11 +72,11 @@ class valid extends StatelessWidget {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(left: Width/10),
-                  child: Image(image: AssetImage('assets/images/page4(2).png'), width: Width/2.5, height: Height/4,),
+                  child: Image(image: const AssetImage('assets/images/page4(2).png'), width: Width/2.5, height: Height/4,),
                 ),
                 Padding(
                   padding:  EdgeInsets.only(right: Width/25,),
-                  child: Image(image: AssetImage('assets/images/page4(3).png')),
+                  child: const Image(image: AssetImage('assets/images/page4(3).png')),
                 ),
             ],)
           ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "205226705881",
+    "project_id": "ats-beta-mobile",
+    "storage_bucket": "ats-beta-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205226705881:android:065a2d8e729d2232af4fc8",
+        "android_client_info": {
+          "package_name": "com.example.ats_beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205226705881-jp9un6fnv4cgqjrsnaand84tj9m46kb3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi6O6Hv4fdTJ3ER9GUpQ7gVXM75xU_I3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205226705881-jp9un6fnv4cgqjrsnaand84tj9m46kb3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
