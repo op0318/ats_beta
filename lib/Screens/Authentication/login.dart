@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/Employeemodel.dart';
 import '../Dashboard/Dashbordpunch.dart';
 import 'Vaildcheck.dart';
@@ -20,23 +21,23 @@ class Employeepage extends StatefulWidget {
 
 class _EmployeepageState extends State<Employeepage> {
    TextEditingController empcontroller=TextEditingController();
-   final FirebaseAuth _auth = FirebaseAuth.instance;
-   final formKey = GlobalKey();
+   final formKey = GlobalKey<FormState>();
+   late SharedPreferences  sharedPreferences;
 
-  // Employees LoggedinUser = Employees(Empid:Empid);
-
-   String? userId = FirebaseAuth.instance.currentUser?.uid;
-   getData(String s) async{
-
-     return FirebaseFirestore.instance.collection('Employee').doc(userId).get().then((value) {
-       Fluttertoast.showToast(msg: 'Login Successfully');
-       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const SelectMapping() ))
-           .catchError((e) {
-         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Valid() ));
-         Fluttertoast.showToast(msg: e);
-       });
-     });
-   }
+   // Employees LoggedinUser = Employees(Empid:Empid);
+   // final FirebaseAuth _auth = FirebaseAuth.instance;
+   // String? userId = FirebaseAuth.instance.currentUser?.uid;
+   // getData(String s) async{
+   //
+   //   return FirebaseFirestore.instance.collection('Employee').doc(userId).get().then((value) {
+   //     Fluttertoast.showToast(msg: 'Login Successfully');
+   //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SelectMapping(userId:userId) ))
+   //         .catchError((e) {
+   //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Valid() ));
+   //       Fluttertoast.showToast(msg: e);
+   //     });
+   //   });
+   // }
 
 
 
@@ -49,33 +50,33 @@ class _EmployeepageState extends State<Employeepage> {
     Widget  build(BuildContext context)  {
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
-    void checkdb() {
-      for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
-      {
-        if ((database[0]['empid'] as List<String>)[i] == empcontroller.text.toString()) {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const SelectMapping()));
-          return;
-        }
-        else
-        {
-
-        }
-       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>const Valid()));
-      }
-    }
-
-   final currentUser = FirebaseAuth.instance;
-    void getUsers() {
-      CollectionReference Employees = FirebaseFirestore.instance.collection('Employee').doc('0wmfoll07el0tLda8HUC').get() as CollectionReference<Object?>;
-      // Validate data
-      Map<String, dynamic> userData = Employees.id as Map<String, dynamic>;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => SelectMapping()));
-      Employees.get().then((QuerySnapshot querySnapshot) => {
-        querySnapshot.docs.forEach((doc) {
-          print(doc.data());
-        })
-      });
-    }
+   //  void checkdb() {
+   //    for(int i = 0; i < (database[0]['empid'] as List<String>).length; i++)
+   //    {
+   //      if ((database[0]['empid'] as List<String>)[i] == empcontroller.text.toString()) {
+   //        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const SelectMapping()));
+   //        return;
+   //      }
+   //      else
+   //      {
+   //
+   //      }
+   //     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>const Valid()));
+   //    }
+   //  }
+   //
+   // final currentUser = FirebaseAuth.instance;
+   //  void getUsers() {
+   //    CollectionReference Employees = FirebaseFirestore.instance.collection('Employee').doc('0wmfoll07el0tLda8HUC').get() as CollectionReference<Object?>;
+   //    // Validate data
+   //    Map<String, dynamic> userData = Employees.id as Map<String, dynamic>;
+   //      Navigator.push(context, MaterialPageRoute(builder: (context) => SelectMapping()));
+   //    Employees.get().then((QuerySnapshot querySnapshot) => {
+   //      querySnapshot.docs.forEach((doc) {
+   //        print(doc.data());
+   //      })
+   //    });
+   //  }
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
@@ -187,7 +188,52 @@ class _EmployeepageState extends State<Employeepage> {
                   // catch(e){
                   //   print(e);
                   // }
-                  getData(userId =empcontroller.text );
+                 // getData(userId =empcontroller.text );
+                  //Focus.of(context).unfocus();
+                  String Empid = empcontroller.text;
+
+                  if(Empid.isEmpty){
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content:Text("Employee id Still Empty") ));
+                  }
+                  else{
+                    QuerySnapshot snap = await FirebaseFirestore.instance.
+                    collection("EmployeeData").where("Empid" ,isEqualTo:Empid).get() ;
+                   // print(snap.docs[0]["Empid"]);
+                    try{
+                      if(Empid == snap.docs[0]["Empid"]){
+                        sharedPreferences = await SharedPreferences.getInstance();
+                        sharedPreferences.setString("EmployeeId", Empid).
+                        then((_) {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => const SelectMapping()));
+                        });
+
+                      }
+                      else {
+                        ScaffoldMessenger.of(context).showSnackBar( const SnackBar(
+                            content:Text("Wrong Empid") ));
+                      }
+                    }catch(e){
+                      String error = "";
+                     // print(e.toString());
+                      if(e.toString()=="RangeError (index): Invalid value: Valid value range is empty: 0"){
+                        setState(() {
+                          error = "Employee id Does not Exists";
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (con)=>const Valid()));
+                        });
+                      }else{
+                        setState(() {
+                          error = "error occurred";
+                        });
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                          content:Text(error) ));
+
+                    }
+
+                  }
                 },
                   shape: BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(5)
@@ -200,7 +246,6 @@ class _EmployeepageState extends State<Employeepage> {
       )
     );
   }
-
    
 
 }

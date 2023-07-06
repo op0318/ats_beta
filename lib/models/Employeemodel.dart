@@ -1,10 +1,11 @@
 
 
 class Employees{
-  late final int Empid;
+  late  int Empid;
   late String Location ;
   late String Name;
   late String uid;
+
 
   Employees({required this.Empid , required this.Location,required this.Name, required this.uid});
   Map<String,dynamic> toMap(){

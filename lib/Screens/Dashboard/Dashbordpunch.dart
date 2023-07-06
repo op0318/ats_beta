@@ -401,12 +401,12 @@ class _punchinState extends State<punchin> {
 Widget customDrawer(BuildContext context){
   double Width = MediaQuery.of(context).size.width;
   double Height = MediaQuery.of(context).size.height;
-  return Drawer(
-    width: Width/2,
-    backgroundColor: const Color(0xff004466),
-    child: SizedBox(
-      height: Height,
-      width: Width/4,
+  return SizedBox(
+    height: Height,
+    width: Width/4,
+    child: Drawer(
+      width: MediaQuery.of(context).size.width * 0.50,
+      backgroundColor: const Color(0xff004466),
       child: ListView(
         children: [
           ListTile(
