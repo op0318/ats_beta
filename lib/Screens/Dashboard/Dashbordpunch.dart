@@ -2,11 +2,13 @@
 
 import 'dart:async';
 import 'dart:math';
+import 'dart:typed_data';
 import 'package:ats_beta/Screens/BottomDrawer/DashboardLeave.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_chart/stacked_chart.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../models/Employeemodel.dart';
 import '../BottomDrawer/ApplyLeave.dart';
 import '../BottomDrawer/MyTickets.dart';
 import '../BottomDrawer/Myteams.dart';
@@ -27,11 +29,39 @@ class _punchinState extends State<punchin> {
     bool isPunchedIn = false;
     DateTime? punchInTime;
     DateTime? punchOutTime;
-    String ? data;
-
-
-
+    String ? Empid;
+    Uint8List? _image;
+    // User? user = FirebaseAuth.instance.currentUser;
+    // Employees LoggedinUser = Employees ();
+    //
+    // Getdetails()async {
+    //   await FirebaseFirestore.instance.collection("EmployeeData").doc(user!.uid).get()
+    //
+    //       .then((value) =>
+    //   LoggedinUser = Employees.fromMap(value?.data()));
+    //
+    // }
     //bool _isDrawerOpen = false;
+
+    pickImage(ImageSource Source) async {
+      final ImagePicker imagePicker = ImagePicker();
+      XFile? file = await imagePicker.pickImage(source:Source );
+      if(file!= null){
+        return file.readAsBytes();
+      }
+      print('No Images Selected');
+    }
+   Future<void> selectImage() async {
+      Uint8List img = await pickImage(ImageSource.gallery);
+      setState(() {
+        _image = img;
+      });
+   }
+
+   // void SaveProfile() async{
+   //    String response = await storeData().SaveData(file:_image! );
+   // }
+
 
   @override
   void initState() {
@@ -40,6 +70,9 @@ class _punchinState extends State<punchin> {
     setState(() {
       location =widget.Address.toString();
      // data = widget.datas .toList() ;
+
+
+      // print(snap.docs[0]["Empid"]);
 
     });
   }
@@ -126,6 +159,8 @@ class _punchinState extends State<punchin> {
     @override
     Widget build(BuildContext context) {
     DateTime now = DateTime.now();
+    // QuerySnapshot snap = FirebaseFirestore.instance.
+    // collection("EmployeeData").where("Empid" ,isEqualTo:Employees.Empid).get() as QuerySnapshot<Object?> ;
     String formattedDate = "${_formatDigits(now.day)}-${_formatDigits(now.month)}-${now.year}";
     double Height = MediaQuery.of(context).size.height;
     double Width = MediaQuery.of(context).size.width;
@@ -136,15 +171,31 @@ class _punchinState extends State<punchin> {
             children: [
               Row(
                 children: [
-                  Padding(
+                  _image != null ?  Padding(
                     padding: EdgeInsets.only(top:Height/25, left: Width/25),
-                    child: Image(image: const AssetImage('assets/images/profile.jpg'),height: Height/10,),
+                    child: GestureDetector(
+                      onTap: (){
+                        selectImage();
+                        // SaveProfile();
+                        print('image tapped');
+                      },
+                        child: CircleAvatar(backgroundImage: MemoryImage(_image!),)),
+                  ): Padding(
+                    padding: EdgeInsets.only(top:Height/25, left: Width/25),
+                    child: GestureDetector(
+                      onTap: (){
+                        // print('profile tapped');
+                        // selectImage();
+                      },
+                      child: const CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/profile.jpg')),
+                    ),
                   ),
                   SizedBox(width: Width/12,),
                   Column(
                     children: [
-                     Text('$data' ,style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
-                      Text('10801' ,style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
+                     Text('${Employees.Name}' ,style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
+                      Text('${Employees.Empid}',style: TextStyle(fontSize: Width/20,color: const Color(0xff000000)),),
                     ],
                   ),
                   SizedBox(width: Width/8,),
@@ -311,11 +362,6 @@ class _punchinState extends State<punchin> {
     );
   }
 
-  // Widget NavigationDrawer(){
-  //     return Drawer(
-  //     backgroundColor:Color(0xff080808)
-  //     );
-  // }
   String formatTime(DateTime dateTime) {
       String hour = dateTime.hour.toString().padLeft(2, '0');
       String minute = dateTime.minute.toString().padLeft(2, '0');

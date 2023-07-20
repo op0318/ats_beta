@@ -1,6 +1,4 @@
 import 'package:ats_beta/Screens/Authentication/login.dart';
-//import 'package:ats_beta/Screens/Dashboard/Dashboard.dart';
-import 'package:ats_beta/Screens/BottomDrawer/DashboardLeave.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -138,7 +136,7 @@ class _SelectMappingState extends State<SelectMapping> {
                               const Color.fromRGBO(0,255,255,255))),
                           onPressed: (){
                             Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Employeepage(),));
-                          }, child: Text('Cancel')),
+                          }, child: const Text('Cancel')),
                     ),
                     SizedBox(
                       height: 50,

@@ -1,12 +1,8 @@
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ats_beta/Screens/Selectlocation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../models/Employeemodel.dart';
-import '../Dashboard/Dashbordpunch.dart';
 import 'Vaildcheck.dart';
 
 
@@ -23,28 +19,8 @@ class _EmployeepageState extends State<Employeepage> {
    TextEditingController empcontroller=TextEditingController();
    final formKey = GlobalKey<FormState>();
    late SharedPreferences  sharedPreferences;
-
-   // Employees LoggedinUser = Employees(Empid:Empid);
-   // final FirebaseAuth _auth = FirebaseAuth.instance;
-   // String? userId = FirebaseAuth.instance.currentUser?.uid;
-   // getData(String s) async{
-   //
-   //   return FirebaseFirestore.instance.collection('Employee').doc(userId).get().then((value) {
-   //     Fluttertoast.showToast(msg: 'Login Successfully');
-   //     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SelectMapping(userId:userId) ))
-   //         .catchError((e) {
-   //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Valid() ));
-   //       Fluttertoast.showToast(msg: e);
-   //     });
-   //   });
-   // }
-
-
-
    List database=[{'empid':['10801', '10802', '10803', '10804', '10805', '10806', '10807', '10809', '10901']},
      {'name':['thiru','devi','vini','suba','Aravind','venkatesh','aji','aji','sadhu','reha']}];
-
-
 
   @override
     Widget  build(BuildContext context)  {
@@ -168,33 +144,12 @@ class _EmployeepageState extends State<Employeepage> {
             Positioned(bottom:Height/7,
                 left:Width/1.3 ,
                 child: FloatingActionButton(onPressed: () async{
-                  // try {
-                  //   DocumentSnapshot docSnapshot = await FirebaseFirestore
-                  //       .instance.collection('Employee').doc(user).get();
-                  //   if (docSnapshot.exists && docSnapshot.data() != null) {
-                  //     // Retrieve the data from the document
-                  //     Map<String, dynamic>? data = docSnapshot.data() as Map<String, dynamic>?;
-                  //     // Perform a null check on the field you want to access
-                  //     if (data != null && data.containsKey('Empid')) {
-                  //       data = empcontroller.text.toString() as Map<String, dynamic>?;
-                  //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SelectMapping()));
-                  //       // Access the field value
-                  //       // Do something with the fieldValue
-                  //       print(data);
-                  //     }
-                  //   }
-                  //   //check();
-                  // }
-                  // catch(e){
-                  //   print(e);
-                  // }
-                 // getData(userId =empcontroller.text );
                   //Focus.of(context).unfocus();
                   String Empid = empcontroller.text;
 
                   if(Empid.isEmpty){
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content:Text("Employee id Still Empty") ));
+                        content:Text("Employeeid is Empty") ));
                   }
                   else{
                     QuerySnapshot snap = await FirebaseFirestore.instance.
@@ -209,7 +164,6 @@ class _EmployeepageState extends State<Employeepage> {
                               MaterialPageRoute(
                                   builder: (context) => const SelectMapping()));
                         });
-
                       }
                       else {
                         ScaffoldMessenger.of(context).showSnackBar( const SnackBar(

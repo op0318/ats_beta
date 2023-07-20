@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Screens/Authentication/login.dart';
+import 'Functions/Storelocation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +29,8 @@ class MyHome extends StatelessWidget {
       StreamProvider(create: (context)=> firestoreservice.getProducts(), initialData: [Products()],)
     ],
         child:   const MaterialApp(
-          home: Authcheck(),
+        home: Authcheck(),
+       // home: Storelocation(),
         debugShowCheckedModeBanner: false,
      ),
     );
@@ -58,6 +59,8 @@ class _AuthcheckState extends State<Authcheck> {
      try{
        if(sharedPreferences.getString("EmployeeId")!= null){
          setState(() {
+           Employees.Empid= sharedPreferences.getString('Empid')!;
+         //  Employees.Name= sharedPreferences.getString('Name')!;
            userAvailable = true;
          });
        }
@@ -69,7 +72,7 @@ class _AuthcheckState extends State<Authcheck> {
    }
   @override
   Widget build(BuildContext context) {
-    return userAvailable ? SelectMapping() : Splshscreen();
+    return userAvailable ? const SelectMapping() : const Splshscreen();
   }
 }
 
